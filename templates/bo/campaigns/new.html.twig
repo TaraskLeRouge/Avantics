@@ -1,0 +1,11 @@
+{% extends 'bo/base.html.twig' %}
+
+{% block title %}New Campaigns{% endblock %}
+
+{% block body %}
+    <h1>Create new Campaigns</h1>
+
+    {{ include('campaigns/_form.html.twig') }}
+
+    <a href="{{ path('campaigns_index') }}">back to list</a>
+{% endblock %}

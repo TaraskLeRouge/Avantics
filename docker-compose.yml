@@ -1,0 +1,42 @@
+version: "3.7"
+
+services:
+  web:
+    container_name: web
+    build: ./docker/nginx
+    links:
+      - php-fpm
+    volumes:
+      - ./var/log/:/var/log/nginx
+      - ./:/srv
+    env_file: ./.env
+    stdin_open: true
+    tty: true
+    ports:
+      - 80:80
+
+  php-cli:
+    container_name: cli
+    build:
+        context: ./docker/php-cli
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./:/srv
+
+  php-fpm:
+    container_name: app
+    build: ./docker/php-fpm
+    volumes:
+      - ./:/srv
+
+  mysql:
+    container_name: db
+    build: ./docker/mysql
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=test
+    volumes:
+      - ./docker/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+      - ../db/:/var/lib/mysql

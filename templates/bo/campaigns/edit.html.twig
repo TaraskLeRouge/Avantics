@@ -1,0 +1,13 @@
+{% extends 'bo/base.html.twig' %}
+
+{% block title %}Edit Campaigns{% endblock %}
+
+{% block body %}
+    <h1>Edit Campaigns</h1>
+
+    {{ include('campaigns/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('campaigns_index') }}">back to list</a>
+
+    {{ include('campaigns/_delete_form.html.twig') }}
+{% endblock %}

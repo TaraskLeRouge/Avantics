@@ -1,0 +1,53 @@
+{% extends 'bo/base.html.twig' %}
+
+{% block title %}Campaigns index{% endblock %}
+
+{% block body %}
+    <h1>Campaigns index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Creation_user_id</th>
+                <th>Creation_date</th>
+                <th>Registration_name_button</th>
+                <th>ThumbnailImageFilename</th>
+                <th>LanscapeImageFilename</th>
+                <th>Start_date</th>
+                <th>Stop_date</th>
+                <th>Actif</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for campaign in campaigns %}
+            <tr>
+                <td>{{ campaign.id }}</td>
+                <td>{{ campaign.name }}</td>
+                <td>{{ campaign.description }}</td>
+                <td>{{ campaign.creationUserId }}</td>
+                <td>{{ campaign.creationDate }}</td>
+                <td>{{ campaign.registrationNameButton }}</td>
+                <td>{{ campaign.thumbnailImageFilename }}</td>
+                <td>{{ campaign.lanscapeImageFilename }}</td>
+                <td>{{ campaign.startDate ? campaign.startDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ campaign.stopDate ? campaign.stopDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ campaign.actif ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('campaigns_show', {'id': campaign.id}) }}">show</a>
+                    <a href="{{ path('campaigns_edit', {'id': campaign.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="12">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('campaigns_new') }}">Create new</a>
+{% endblock %}

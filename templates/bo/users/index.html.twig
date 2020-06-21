@@ -1,0 +1,69 @@
+{% extends 'bo/base.html.twig' %}
+
+{% block title %}Campaigns index{% endblock %}
+
+{% block body %}
+    <h1>Users index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Email</th>
+                <th>Lastname</th>
+                <th>Firstname</th>
+                <th>Gender</th>
+                <th>Birthdate</th>
+                <th>Post_code</th>
+                <th>Travel</th>
+                <th>Contest_game</th>
+                <th>Auto_moto</th>
+                <th>Shopping</th>
+                <th>Cosmetic</th>
+                <th>Insurance</th>
+                <th>Mutual_health</th>
+                <th>Optin</th>
+                <th>Optin_date</th>
+                <th>Optin_ip</th>
+                <th>Unsubscripe_date</th>
+                <th>Unsubscripe_ip</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.lastname }}</td>
+                <td>{{ user.firstname }}</td>
+                <td>{{ user.gender }}</td>
+                <td>{{ user.birthdate ? user.birthdate|date('Y-m-d') : '' }}</td>
+                <td>{{ user.postCode }}</td>
+                <td>{{ user.travel ? 'Yes' : 'No' }}</td>
+                <td>{{ user.contestGame ? 'Yes' : 'No' }}</td>
+                <td>{{ user.autoMoto ? 'Yes' : 'No' }}</td>
+                <td>{{ user.shopping ? 'Yes' : 'No' }}</td>
+                <td>{{ user.cosmetic ? 'Yes' : 'No' }}</td>
+                <td>{{ user.insurance ? 'Yes' : 'No' }}</td>
+                <td>{{ user.mutualHealth ? 'Yes' : 'No' }}</td>
+                <td>{{ user.optin ? 'Yes' : 'No' }}</td>
+                <td>{{ user.optinDate ? user.optinDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ user.optinIp }}</td>
+                <td>{{ user.unsubscripeDate ? user.unsubscripeDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ user.unsubscripeIp }}</td>
+                <td>
+                    <a href="{{ path('users_show', {'id': user.id}) }}">show</a>
+                    <a href="{{ path('users_edit', {'id': user.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="20">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('users_new') }}">Create new</a>
+{% endblock %}

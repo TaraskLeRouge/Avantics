@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Avantics - Générateur de pouvoir d'achat{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body>
+    	<header>
+
+    	</header>
+
+    	{% block body %}{% endblock %}
+
+
+
+    	<footer>
+
+			{{ form_start(form_locale) }}
+				{{ form_errors(form_locale) }}
+
+				{{ form_row(form_locale.list_of_locale) }}
+
+			{{ form_end(form_locale) }}
+
+
+    		<div class="">
+    			<h1>Qui sommes nous ?</h1>
+
+<p>
+Le site Avantics.fr est édité par la société WEB EDITION PLANET, SAS , au capital de 3500 euros et dont le siège se trouve au 105 rue Anatole France, 92300 Levallois-Perret, immatriculée au RCS Nanterre sous le numéro 791 016 801. Le site Avantics.fr est hébergé par : OVH Directeur de la publication : Johan PAILLOCHER</p>
+
+Contact :
+Web Edition Planet
+105, rue Anatole France
+6ème étage
+92300 Levallois-Perret
+Tel : 09 83 57 47 69
+@ :contact@avantics.fr
+Avantics est un service gratuit qui propose de recevoir 1 fois par semaine une newsletter vous informant de l'actualité des bons plans du web : jeux concours, échantillons gratuits, bons de réduction, idées de sorties, voyages, ...
+
+L'utilisation du service est gratuite et toute personne qui souhaite s'abonner pour recevoir les offres pourra se désabonner à tout moment et sans condition grâce au lien de désabonnement qui se trouve au bas de chaque email !
+
+La sélection des bons plans est très soignée car nous ne relayons pas : campagne douteuse, adulte, rencontre, Lotterie, voyance, ... 
+    		</div>
+
+    	</footer>
+
+        
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

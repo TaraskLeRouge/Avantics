@@ -1,0 +1,94 @@
+{% extends 'bo/base.html.twig' %}
+
+{% block title %}Campaigns index{% endblock %}
+
+{% block body %}
+    <h1>Users</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ user.id }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ user.email }}</td>
+            </tr>
+            <tr>
+                <th>Lastname</th>
+                <td>{{ user.lastname }}</td>
+            </tr>
+            <tr>
+                <th>Firstname</th>
+                <td>{{ user.firstname }}</td>
+            </tr>
+            <tr>
+                <th>Gender</th>
+                <td>{{ user.gender }}</td>
+            </tr>
+            <tr>
+                <th>Birthdate</th>
+                <td>{{ user.birthdate ? user.birthdate|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Post_code</th>
+                <td>{{ user.postCode }}</td>
+            </tr>
+            <tr>
+                <th>Travel</th>
+                <td>{{ user.travel ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Contest_game</th>
+                <td>{{ user.contestGame ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Auto_moto</th>
+                <td>{{ user.autoMoto ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Shopping</th>
+                <td>{{ user.shopping ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Cosmetic</th>
+                <td>{{ user.cosmetic ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Insurance</th>
+                <td>{{ user.insurance ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Mutual_health</th>
+                <td>{{ user.mutualHealth ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Optin</th>
+                <td>{{ user.optin ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Optin_date</th>
+                <td>{{ user.optinDate ? user.optinDate|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Optin_ip</th>
+                <td>{{ user.optinIp }}</td>
+            </tr>
+            <tr>
+                <th>Unsubscripe_date</th>
+                <td>{{ user.unsubscripeDate ? user.unsubscripeDate|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Unsubscripe_ip</th>
+                <td>{{ user.unsubscripeIp }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('users_index') }}">back to list</a>
+
+    <a href="{{ path('users_edit', {'id': user.id}) }}">edit</a>
+
+    {{ include('users/_delete_form.html.twig') }}
+{% endblock %}

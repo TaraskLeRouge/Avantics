@@ -1,0 +1,42 @@
+upstream php-upstream {
+    server app:9000;
+}
+
+#server {
+#    listen 80;
+#    server_name ${APP_DOMAIN};    location / {
+#        return 301 https://$host$request_uri;
+#    }
+#}
+
+#server {
+#    listen 443 ssl;
+#    server_name example.org;
+#}
+
+server {
+#    listen 443 ssl;
+    listen 80;
+    server_name ${APP_DOMAIN};
+    root /srv/public;
+
+    location / {
+        try_files $uri /index.php$is_args$args;
+#        proxy_pass $uri /index.php$is_args$args;
+    }
+
+    location @rewriteapp {
+        rewrite ^(.*)$ /index.php/$1 last;
+    }
+
+    location ~ ^/index\.php(/|$) {
+        fastcgi_pass php-upstream;
+        fastcgi_split_path_info ^(.+\.php)(/.*)$;
+        include fastcgi_params;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        fastcgi_param HTTPS off;
+    }
+
+#    error_log /var/log/nginx/nginx2_error.log;
+#    access_log /var/log/nginx/nginx2_access.log;
+}

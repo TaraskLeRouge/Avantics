@@ -1,0 +1,13 @@
+fo:
+  resource: ../src/Controller/FrontOffice/
+  type: annotation
+  prefix: /{_locale}
+  requirements:
+    _locale: en|fr|
+  defaults:
+    _locale: fr
+
+bo:
+  resource: ../src/Controller/BackOffice/
+  prefix: /bo
+  type: annotation

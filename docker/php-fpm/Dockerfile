@@ -4,6 +4,7 @@ ENV TIMEZONE Europe/Paris
 
 RUN cp /usr/share/zoneinfo/${TIMEZONE} /etc/localtime
 RUN echo "${TIMEZONE}" > /etc/timezone
+RUN echo "date.timezone = ${TIMEZONE}" > /usr/local/etc/php/conf.d/timezone.ini
 RUN apt-get update
 RUN apt-get install -y \
         libzip-dev \

@@ -5,9 +5,9 @@
 {% block body %}
     <h1>Edit Campaigns</h1>
 
-    {{ include('campaigns/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('bo/campaigns/_form.html.twig', {'button_label': 'Update'}) }}
 
     <a href="{{ path('campaigns_index') }}">back to list</a>
 
-    {{ include('campaigns/_delete_form.html.twig') }}
+    {{ include('bo/campaigns/_delete_form.html.twig') }}
 {% endblock %}

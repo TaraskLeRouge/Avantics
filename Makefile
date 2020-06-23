@@ -53,7 +53,8 @@ fix-perms: ## Fix permissions of all var files
 
 
 ## Docker commands ———————————————————————————————————
-
+node: ## Connect to container
+	$(DOCKER_COMPOSE) exec -w "/srv" node bash
 
 web: ## Connect to container
 	$(DOCKER_COMPOSE) exec -w "/srv" web bash 

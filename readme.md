@@ -10,11 +10,10 @@ Execute this command: app:create-administrator EMAIL FIRSTNAME LASTNAME
 
 ## To do
 - pourquoi sur le unscrube je peux pas lié à l'entité comparé au crud
-- bo page
-- fo page
-- Translation FR / EN
-- docker SMTP + test
+- menu bo
+- storage upload ?
 - ansible
 - html / css
 - Finir le readme
 - nettoyage makefile 
+- docker SMTP + test

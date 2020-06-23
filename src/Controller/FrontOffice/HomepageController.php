@@ -2,8 +2,8 @@
 
 namespace App\Controller\FrontOffice;
 
-use App\Form\LocaleType;
 use App\Form\SubscribeType;
+use App\Service\Campaigns;
 use App\Service\Protocol;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -14,10 +14,11 @@ class HomepageController extends AbstractController
     /**
      * @Route("/", name="homepage")
      */
-    public function index(Request $request)
+    public function index(Request $request, Campaigns $campaigns)
     {
+        $allCampaignsActiveNow = $campaigns->getAllCampaignsActiveNow();
+
 		$form = $this->createForm(SubscribeType::class);
-        $formLocale = $this->createForm(LocaleType::class);
 		$form->handleRequest($request);
 
 		if ($form->isSubmitted() && $form->isValid()) {
@@ -64,9 +65,18 @@ class HomepageController extends AbstractController
 		}
 
         return $this->render('fo/homepage/index.html.twig', [
-            'controller_name' => 'HomepageController',
+            'campaigns' => $allCampaignsActiveNow,
             'form' => $form->createView(),
-            'form_locale' => $formLocale->createView()
         ]);
     }
+
+    /**
+     * @Route("/change_locale/{locale}", name="change_locale")
+     */
+    public function changeLocale($locale, Request $request)
+    {
+        $request->getSession()->set('_locale', $locale);
+        return $this->redirect($request->headers->get('referer'));
+    }
+
 }

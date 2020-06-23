@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="symfony_is_great">
+                <source>app.homepage.titre</source>
+                <target>Avantics - Generating purchasing power</target>
+            </trans-unit>
+
+            <trans-unit id="app.unsubscribe.titre">
+                <source>app.unsubscribe.titre</source>
+                <target>Avantics - Se désinscrire du programme</target>
+            </trans-unit>
+
+            <trans-unit id="app.campaign.titre">
+                <source>app.campaign.titre</source>
+                <target>Avantics - </target>
+            </trans-unit>
+
+            <trans-unit id="app.change_locale.fr">
+                <source>app.change_locale.fr</source>
+                <target>Changer la langue en Français</target>
+            </trans-unit>
+
+            <trans-unit id="app.footer.who_are_we.titre">
+                <source>app.footer.who_are_we.titre</source>
+                <target>Qui somme nous ?</target>
+            </trans-unit>
+
+            <trans-unit id="app.footer.who_are_we.description">
+                <source>app.footer.who_are_we.description</source>
+                <target>
+                    <![CDATA[
+                    <div class="fond2">
+		<img alt="jojo dispose" src="img/jojo.png">
+
+		<div>
+			<h3>Jojo Dispose est le 1er assistant en planning-itinéraire de sorties et de balades.</h3>
+
+			<p>
+				Johan ou Jojo pour les intimes est un drôle de personnage. Agréable, ambitieux et un peu fou fou ; il ne serait pas étonnant que vous le croisiez lors de vos sorties exceptionnelles comme les plus banales.  Jojo est toujours à l'affût des meilleurs endroits, des lieux où l’on s'y sent bien.
+
+				Ses critères sont la convivialité, la fête, le service, l'accueil ...
+
+				Jojo en avait marre de chercher sans fin dans les annuaires ou les guides pour trouver une idée de balades, de sorties ...
+				Il a donc décidé de créer cet assistant en planning et itinéraires de sorties et de balades.
+				Pas de chichi : Jojo Dispose, Jojo impose et Jojo réussira bien à vous satisfaire.
+
+				Visitez le site de Jojo Dispose
+			</p>
+		</div>
+
+		<div>
+			<h3>Qui sommes nous ?</h3>
+
+			<p>
+				Le site Avantics.fr est édité par la société WEB EDITION PLANET, SAS , au capital de 3500 euros et dont le siège se trouve au 105 rue Anatole France, 92300 Levallois-Perret, immatriculée au RCS Nanterre sous le numéro 791 016 801.
+
+				Le site Avantics.fr est hébergé par : OVH
+				Directeur de la publication : Johan PAILLOCHER
+				<br>
+				<br>
+
+				</p><address>
+					Contact :<br>
+					Web Edition Planet<br>
+					105, rue Anatole France<br>
+					6ème étage<br>
+					92300 Levallois-Perret<br>
+					Tel : 09 83 57 47 69<br>
+					@ :<a href="mailto:contact@avantics.fr">contact@avantics.fr</a><br>
+				</address>
+
+				Avantics est un service gratuit qui propose de recevoir 1 fois par semaine une newsletter vous informant de l'actualité des bons plans du web : jeux concours, échantillons gratuits, bons de réduction, idées de sorties, voyages, ...<br>
+				<br>
+				L'utilisation du service est gratuite et toute personne qui souhaite s'abonner pour recevoir les offres pourra se désabonner à tout moment et sans condition grâce au lien de désabonnement qui se trouve au bas de chaque email !<br>
+				<br>
+				La sélection des bons plans est très soignée car nous ne relayons pas : campagne douteuse, adulte, rencontre, Lotterie, voyance, ...
+			<p></p>
+		</div>
+	</div>
+                    ]]>
+                </target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

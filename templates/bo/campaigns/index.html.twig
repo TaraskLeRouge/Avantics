@@ -13,6 +13,8 @@
                 <th>Description</th>
                 <th>Creation_user_id</th>
                 <th>Creation_date</th>
+                <th>Update_user_id</th>
+                <th>Update_date</th>
                 <th>Registration_name_button</th>
                 <th>ThumbnailImageFilename</th>
                 <th>LanscapeImageFilename</th>
@@ -29,7 +31,9 @@
                 <td>{{ campaign.name }}</td>
                 <td>{{ campaign.description }}</td>
                 <td>{{ campaign.creationUserId }}</td>
-                <td>{{ campaign.creationDate }}</td>
+                <td>{{ campaign.creationDate ? campaign.creationDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ campaign.updateUserId }}</td>
+                <td>{{ campaign.updateDate ? campaign.updateDate|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ campaign.registrationNameButton }}</td>
                 <td>{{ campaign.thumbnailImageFilename }}</td>
                 <td>{{ campaign.lanscapeImageFilename }}</td>

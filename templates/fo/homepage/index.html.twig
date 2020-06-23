@@ -1,16 +1,29 @@
 {% extends 'fo/base.html.twig' %}
 
-{% block title %}Hello HomepageController!{% endblock %}
+{% block title %}{% trans %}app.homepage.titre{% endtrans %}{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <h1>
+        Générez du pouvoir d’achat, en recevant 1 fois par semaine une offre promotionnelle.
+    </h1>
 
-<main class="example-wrapper">
-    <h1>Hello! ✅</h1>
+    <p>
+        Avantics, vous permettra de chercher et de vous proposer les meilleures offres promotionnelles
+        du moment en adéquation avec vos attentes.
+    </p>
+    <p>
+        Cette offre, vous sera envoyée 1 fois par semaine maximum sous forme de newsletter ou d'e-mail
+        dédié à la dite offre.
+    </p>
+    <p>
+        Pour que vos attentes soient en adéquation avec nos offres partenaires.
+        Sélectionnez dès à présent vos centres d'intérêt et gagnez des points sur votre pouvoir d'achat.
+        Inscription gratuite et rapide !
+    </p>
 
+
+    <section class="subscription">
+        <h1></h1>
 	{{ form_start(form) }}
 	    {{ form_errors(form) }}
 
@@ -18,6 +31,11 @@
 
 	    {{ form_row(form.submit, { 'label': 'Submit me' }) }}
 	{{ form_end(form) }}
+    </section>
 
-</main>
+    <section class="campaigns">
+        {% for campaign in campaigns %}
+            {{ campaign.name }}
+        {% endfor %}
+    </section>
 {% endblock %}

@@ -19,32 +19,39 @@ class CampaignsRepository extends ServiceEntityRepository
         parent::__construct($registry, Campaigns::class);
     }
 
-    // /**
-    //  * @return Campaigns[] Returns an array of Campaigns objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    public function get($id) :?Campaigns
     {
         return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('c.id', 'ASC')
+            ->andWhere('c.id = :id')
+            ->setParameter('id', $id)
+            ->andWhere('c.actif = :actif')
+            ->setParameter('actif', true)
+            ->andWhere('c.start_date <= :start_date')
+            ->orWhere('c.start_date is null')
+            ->setParameter('start_date', new \DateTime('now'))
+            ->andWhere('c.stop_date >= :stop_date')
+            ->orWhere('c.stop_date is null')
+            ->setParameter('stop_date', new \DateTime('now'))
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
+
+    public function getAllCampaignsActiveNow() :array
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.actif = :actif')
+            ->setParameter('actif', true)
+            ->andWhere('c.start_date <= :start_date')
+            ->orWhere('c.start_date is null')
+            ->setParameter('start_date', new \DateTime('now'))
+            ->andWhere('c.stop_date >= :stop_date')
+            ->orWhere('c.stop_date is null')
+            ->setParameter('stop_date', new \DateTime('now'))
+            ->orderBy('c.id', 'DESC')
             ->setMaxResults(10)
             ->getQuery()
             ->getResult()
         ;
     }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?Campaigns
-    {
-        return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }

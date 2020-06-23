@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\CampaignsRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=CampaignsRepository::class)
@@ -33,9 +34,19 @@ class Campaigns
     private $creation_user_id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="datetime", nullable=false)
      */
     private $creation_date;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $update_user_id;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $update_date;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -44,11 +55,15 @@ class Campaigns
 
     /**
      * @ORM\Column(type="string", length=255)
+     *
+     * @Assert\File(mimeTypes={"image/jpeg", "image/jpg", "image/png"})
      */
     private $thumbnailImageFilename;
 
     /**
      * @ORM\Column(type="string", length=255)
+     *
+     * @Assert\File(mimeTypes={"image/jpeg", "image/jpg", "image/png"})
      */
     private $lanscapeImageFilename;
 
@@ -108,14 +123,38 @@ class Campaigns
         return $this;
     }
 
-    public function getCreationDate(): ?string
+    public function getCreationDate(): ?\DateTimeInterface
     {
         return $this->creation_date;
     }
 
-    public function setCreationDate(string $creation_date): self
+    public function setCreationDate(\DateTimeInterface $creation_date): self
     {
         $this->creation_date = $creation_date;
+
+        return $this;
+    }
+
+    public function getUpdateUserId(): ?int
+    {
+        return $this->update_user_id;
+    }
+
+    public function setUpdateUserId(int $update_user_id): self
+    {
+        $this->update_user_id = $update_user_id;
+
+        return $this;
+    }
+
+    public function getUpdateDate(): ?\DateTimeInterface
+    {
+        return $this->update_date;
+    }
+
+    public function setUpdateDate(?\DateTimeInterface $update_date): self
+    {
+        $this->update_date = $update_date;
 
         return $this;
     }

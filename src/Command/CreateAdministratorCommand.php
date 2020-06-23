@@ -31,9 +31,9 @@ class CreateAdministratorCommand extends Command
     {
         $this
             ->setDescription('Add an administrator')
-            ->addArgument('email', InputArgument::OPTIONAL, 'Email user\'s')
-            ->addArgument('firstname', InputArgument::OPTIONAL, 'Firstname user\'s')
-            ->addArgument('lastname', InputArgument::OPTIONAL, 'Lastname user\'s')
+            ->addArgument('email', InputArgument::REQUIRED, 'Email user\'s')
+            ->addArgument('firstname', InputArgument::REQUIRED, 'Firstname user\'s')
+            ->addArgument('lastname', InputArgument::REQUIRED, 'Lastname user\'s')
         ;
     }
 
@@ -43,23 +43,6 @@ class CreateAdministratorCommand extends Command
         $email = $input->getArgument('email');
         $lastname = $input->getArgument('lastname');
         $firstname = $input->getArgument('firstname');
-
-        if (!$email || !$lastname || !$firstname) {
-            if (!$email) {
-                $io->error('Missing argument: Email');
-            }
-
-            if (!$lastname) {
-                $io->error('Missing argument: Lastname');
-            }
-
-            if (!$firstname) {
-                $io->error('Missing argument: Firstname');
-            }
-
-            return Command::FAILURE;
-        }
-
         $password = $this->generateRandomPassword();
 
         $administrators = new Administrators();
@@ -74,7 +57,8 @@ class CreateAdministratorCommand extends Command
                 )
             )
             ->setRoles(['ROLE_ADMIN'])
-            ->setIsVerified(true);
+            ->setIsVerified(true)
+        ;
 
         $this->em->persist($administrators);
         $this->em->flush();

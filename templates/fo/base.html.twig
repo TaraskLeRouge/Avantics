@@ -2,51 +2,53 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Avantics - Générateur de pouvoir d'achat{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        <title>{% block title %}{% endblock %}</title>
+
+        {% block head_css %}
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        {% endblock %}
+
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
     </head>
     <body>
+        {% form_theme form 'bootstrap_4_layout.html.twig' %}
     	<header>
+            <div class="logo">
+                <svg width="295" height="72" viewBox="0 0 295 72" class="css-1j8o68f"><defs id="SvgjsDefs4077"></defs><g id="SvgjsG4078" featurekey="symbolFeature-0" transform="matrix(0.17105059325695038,0,0,0.17105059325695038,0,-1.716023493703895)" fill="#284d92"><g xmlns="http://www.w3.org/2000/svg"><g><path d="M274.61,249.183c-5.044,0-8.816,3.714-10.618,5.929c-4.025,4.951-6.336,12.059-6.336,19.499s2.311,14.548,6.336,19.5    c1.802,2.214,5.574,5.928,10.618,5.928s8.816-3.714,10.618-5.928c4.025-4.952,6.336-12.06,6.336-19.5s-2.311-14.548-6.336-19.499    C283.428,252.896,279.654,249.183,274.61,249.183z"></path><path d="M166.384,191.81c5.044,0,8.816-3.714,10.618-5.928c4.026-4.952,6.336-12.059,6.336-19.5c0-7.441-2.31-14.547-6.336-19.499    c-1.802-2.214-5.574-5.928-10.618-5.928c-5.044,0-8.816,3.714-10.618,5.928c-4.026,4.952-6.336,12.058-6.336,19.499    c0,7.441,2.31,14.548,6.336,19.5C157.567,188.097,161.34,191.81,166.384,191.81z"></path><path d="M435.289,209.037l-53.984-40.794l19.699-64.751c1.312-4.31,0.525-8.984-2.123-12.628    c-2.647-3.643-6.854-5.833-11.356-5.916l-67.672-1.235l-22.065-63.997c-1.469-4.262-4.855-7.587-9.143-8.979    c-4.283-1.393-8.979-0.692-12.675,1.892l-55.475,38.814L165.02,12.627c-3.693-2.583-8.387-3.285-12.674-1.892    c-4.289,1.393-7.672,4.718-9.143,8.979l-22.064,63.996l-67.672,1.236c-4.502,0.083-8.707,2.272-11.355,5.916    c-2.648,3.644-3.436,8.319-2.125,12.628l19.701,64.75L5.705,209.037C2.111,211.751,0,215.995,0,220.497    c0,4.503,2.111,8.746,5.705,11.461l53.984,40.794L39.99,337.502c-1.311,4.31-0.523,8.984,2.125,12.628    c2.648,3.643,6.854,5.833,11.355,5.916l67.672,1.236l22.064,63.996c1.469,4.262,4.854,7.587,9.141,8.979    c4.285,1.394,8.98,0.692,12.674-1.893l55.475-38.814l55.477,38.815c2.443,1.709,5.324,2.595,8.236,2.595    c1.488,0,2.986-0.23,4.438-0.703c4.286-1.393,7.672-4.718,9.141-8.979l22.063-63.996l67.675-1.237    c4.502-0.083,8.707-2.272,11.354-5.916c2.648-3.644,3.437-8.318,2.125-12.628l-19.701-64.749l53.984-40.795    c3.594-2.715,5.705-6.958,5.705-11.461S438.883,211.75,435.289,209.037z M166.384,121.01c20.38,0,36.901,20.314,36.901,45.374    c0,25.061-16.521,45.375-36.901,45.375c-20.38,0-36.901-20.314-36.901-45.375C129.482,141.324,146.004,121.01,166.384,121.01z     M164.038,320.178c-2.307,3.209-6.047,5.125-10.005,5.125c-2.581,0-5.059-0.8-7.163-2.312c-5.509-3.957-6.771-11.658-2.813-17.167    l132.9-185.01c2.306-3.209,6.046-5.125,10.005-5.125c2.58,0,5.058,0.8,7.162,2.312c5.509,3.957,6.771,11.658,2.813,17.167    L164.038,320.178z M274.61,319.983c-20.38,0-36.901-20.313-36.901-45.375c0-25.059,16.521-45.373,36.901-45.373    s36.9,20.314,36.9,45.373C311.512,299.669,294.99,319.983,274.61,319.983z"></path></g></g></g><g id="SvgjsG4079" featurekey="nameFeature-0" transform="matrix(1.0560777187347412,0,0,1.0560777187347412,92.46541190833318,8.453796802051821)" fill="#284d92"><path d="M21.9 37.52 c0.44 0.06 0.68 0.22 0.68 0.74 l0 1.18 c0 0.44 -0.2 0.68 -0.96 0.72 c-2.8 0.14 -3.8 -1.16 -3.8 -3.16 c-2.6 2.6 -6.2 3.48 -8.92 3.48 c-4.58 0 -6.5 -2.32 -6.5 -5.54 s1.96 -5.2 6.24 -5.84 l6.26 -0.94 c1.72 -0.26 2.36 -0.46 2.52 -0.9 l0 -0.02 c0 -3.4 -1.84 -4.64 -5.24 -4.64 c-3.1 0 -5.38 0.84 -5.7 3.32 c-0.04 0.32 -0.24 0.48 -0.6 0.48 l-1.76 0 c-0.36 0 -0.6 -0.2 -0.56 -0.6 c0.44 -4.32 3.84 -5.84 8.62 -5.84 c5.84 0 8.14 2.8 8.14 7.08 l0 8.88 c0 0.98 0.54 1.48 1.58 1.6 z M5.44 34.7 c0 1.86 1.12 3.1 3.94 3.1 c2.62 0 5.52 -0.66 8.04 -3.16 l0 -4.96 c-0.14 0.4 -0.62 0.56 -1.96 0.76 l-5.94 0.9 c-3.24 0.5 -4.08 1.66 -4.08 3.36 z M43.68 20.88 c0.14 -0.32 0.4 -0.48 0.72 -0.48 l1.82 0 c0.44 0 0.68 0.24 0.48 0.68 l-8.06 18.44 c-0.14 0.32 -0.4 0.48 -0.72 0.48 l-2.08 0 c-0.32 0 -0.58 -0.16 -0.72 -0.48 l-8.06 -18.44 c-0.2 -0.44 0.04 -0.68 0.48 -0.68 l1.82 0 c0.32 0 0.58 0.16 0.72 0.48 l6.8 15.82 z M71.08 37.52 c0.44 0.06 0.68 0.22 0.68 0.74 l0 1.18 c0 0.44 -0.2 0.68 -0.96 0.72 c-2.8 0.14 -3.8 -1.16 -3.8 -3.16 c-2.6 2.6 -6.2 3.48 -8.92 3.48 c-4.58 0 -6.5 -2.32 -6.5 -5.54 s1.96 -5.2 6.24 -5.84 l6.26 -0.94 c1.72 -0.26 2.36 -0.46 2.52 -0.9 l0 -0.02 c0 -3.4 -1.84 -4.64 -5.24 -4.64 c-3.1 0 -5.38 0.84 -5.7 3.32 c-0.04 0.32 -0.24 0.48 -0.6 0.48 l-1.76 0 c-0.36 0 -0.6 -0.2 -0.56 -0.6 c0.44 -4.32 3.84 -5.84 8.62 -5.84 c5.84 0 8.14 2.8 8.14 7.08 l0 8.88 c0 0.98 0.54 1.48 1.58 1.6 z M54.62 34.7 c0 1.86 1.12 3.1 3.94 3.1 c2.62 0 5.52 -0.66 8.04 -3.16 l0 -4.96 c-0.14 0.4 -0.62 0.56 -1.96 0.76 l-5.94 0.9 c-3.24 0.5 -4.08 1.66 -4.08 3.36 z M88.16000000000001 19.96 c4.42 0 7.18 2.56 7.18 7.8 l0 11.64 c0 0.36 -0.24 0.6 -0.6 0.6 l-1.8 0 c-0.36 0 -0.6 -0.24 -0.6 -0.6 l0 -11.44 c0 -3.48 -1.72 -5.26 -5.06 -5.26 c-4.46 0 -6.62 3.78 -6.62 4.58 l0 12.12 c0 0.36 -0.24 0.6 -0.6 0.6 l-1.8 0 c-0.36 0 -0.6 -0.24 -0.6 -0.6 l0 -18.4 c0 -0.36 0.24 -0.6 0.6 -0.6 l1.64 0 c0.36 0 0.56 0.24 0.6 0.6 l0.16 2.76 l0.4 0 c1.12 -1.92 3.6 -3.8 7.1 -3.8 z M120.98 36.96 c0.24 0.28 0.24 0.56 0 0.8 c-0.92 1 -3.12 2.56 -6.44 2.56 c-3.88 0 -7.56 -1.68 -7.56 -7.88 l0 -9.36 l-5.24 0 c-0.36 0 -0.6 -0.24 -0.6 -0.6 l0 -1.48 c0 -0.36 0.24 -0.6 0.6 -0.6 l5.24 0 l0 -5.2 c0 -0.36 0.24 -0.6 0.6 -0.6 l1.8 0 c0.36 0 0.6 0.24 0.6 0.6 l0 5.2 l8.68 0 c0.36 0 0.6 0.24 0.6 0.6 l0 1.48 c0 0.36 -0.24 0.6 -0.6 0.6 l-8.68 0 l0 9.24 c0 4.14 2.36 5.24 4.94 5.24 c2.16 0 3.54 -0.96 4.34 -1.64 c0.28 -0.28 0.6 -0.24 0.84 0.04 z M135.88000000000002 15.719999999999999 c-1.08 0 -1.92 -0.84 -1.92 -1.92 s0.84 -1.92 1.92 -1.92 s1.92 0.84 1.92 1.92 s-0.84 1.92 -1.92 1.92 z M143.96 37.32 c0.36 0 0.6 0.24 0.6 0.6 l0 1.48 c0 0.36 -0.24 0.6 -0.6 0.6 l-17 0 c-0.36 0 -0.6 -0.24 -0.6 -0.6 l0 -1.48 c0 -0.36 0.24 -0.6 0.6 -0.6 l7.52 0 l0 -14.24 l-6.52 0 c-0.36 0 -0.6 -0.24 -0.6 -0.6 l0 -1.48 c0 -0.36 0.24 -0.6 0.6 -0.6 l8.92 0 c0.36 0 0.6 0.24 0.6 0.6 l0 16.32 l6.48 0 z M160.26 37.72 c2.56 0 4.58 -1.08 5.96 -2.92 c0.24 -0.32 0.48 -0.34 0.8 -0.14 l1.34 0.8 c0.32 0.2 0.4 0.5 0.18 0.82 c-1.78 2.62 -4.76 4.24 -8.32 4.24 c-5.88 0 -10.16 -4.44 -10.16 -10.28 s4.28 -10.28 10.16 -10.28 c3.56 0 6.54 1.62 8.32 4.24 c0.22 0.32 0.14 0.62 -0.18 0.82 l-1.34 0.8 c-0.32 0.2 -0.56 0.18 -0.8 -0.14 c-1.38 -1.84 -3.4 -2.92 -5.96 -2.92 c-4.2 0 -7.24 3.04 -7.24 7.48 s3.04 7.48 7.24 7.48 z M182.86 29 c4.7 0.62 8.92 1.22 8.92 5.72 c0 3.38 -2.68 5.8 -8.92 5.8 c-4.94 0 -8.52 -1.48 -8.96 -5.8 c-0.04 -0.4 0.2 -0.6 0.56 -0.6 l1.78 0 c0.36 0 0.56 0.16 0.6 0.48 c0.32 2.48 2.78 3.32 6.02 3.32 c3.78 0 5.98 -1.06 5.98 -3.16 c0 -2.38 -2.5 -2.88 -5.98 -3.32 c-4.6 -0.58 -8.56 -1.36 -8.56 -5.76 c0 -3.3 2.44 -5.72 8.24 -5.72 c4.76 0 8.36 1.48 8.8 5.8 c0.04 0.4 -0.2 0.6 -0.56 0.6 l-1.76 0 c-0.36 0 -0.56 -0.16 -0.6 -0.48 c-0.32 -2.48 -2.8 -3.32 -5.88 -3.32 c-3.34 0 -5.32 1 -5.32 3.14 c0 2.32 2.18 2.84 5.64 3.3 z"></path></g></svg>
+            </div>
+            <div class="change_language">
+                {% set current_path = app.request.get('_route') %}
+                {% set current_locale = app.request.get('_locale') %}
 
-    	</header>
+                {% if current_locale == 'fr' %}
+                    <a href="{{ path(current_path, {'_locale': 'en'}) }}">{% trans %}app.change_locale.en{% endtrans %}</a>
+                {% endif %}
 
+                {% if current_locale == 'en' %}
+                    <a href="{{ path(current_path, {'_locale': 'fr'}) }}">{% trans %}app.change_locale.fr{% endtrans %}</a>
+                {% endif %}
+            </div>
+        </header>
+
+        <main>
     	{% block body %}{% endblock %}
-
-
+        </main>
 
     	<footer>
-
-			{{ form_start(form_locale) }}
-				{{ form_errors(form_locale) }}
-
-				{{ form_row(form_locale.list_of_locale) }}
-
-			{{ form_end(form_locale) }}
-
-
-    		<div class="">
-    			<h1>Qui sommes nous ?</h1>
-
-<p>
-Le site Avantics.fr est édité par la société WEB EDITION PLANET, SAS , au capital de 3500 euros et dont le siège se trouve au 105 rue Anatole France, 92300 Levallois-Perret, immatriculée au RCS Nanterre sous le numéro 791 016 801. Le site Avantics.fr est hébergé par : OVH Directeur de la publication : Johan PAILLOCHER</p>
-
-Contact :
-Web Edition Planet
-105, rue Anatole France
-6ème étage
-92300 Levallois-Perret
-Tel : 09 83 57 47 69
-@ :contact@avantics.fr
-Avantics est un service gratuit qui propose de recevoir 1 fois par semaine une newsletter vous informant de l'actualité des bons plans du web : jeux concours, échantillons gratuits, bons de réduction, idées de sorties, voyages, ...
-
-L'utilisation du service est gratuite et toute personne qui souhaite s'abonner pour recevoir les offres pourra se désabonner à tout moment et sans condition grâce au lien de désabonnement qui se trouve au bas de chaque email !
-
-La sélection des bons plans est très soignée car nous ne relayons pas : campagne douteuse, adulte, rencontre, Lotterie, voyance, ... 
-    		</div>
-
+			<h1>{% trans %}app.footer.who_are_we.titre{% endtrans %}</h1>
+			<div>{% trans %}app.footer.who_are_we.description{% endtrans %}</div>
     	</footer>
 
-        
-        {% block javascripts %}{% endblock %}
+        {% block head_js %}
+            <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        {% endblock %}
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
     </body>
 </html>

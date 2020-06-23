@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 /**
  * @Route("/campaigns")
@@ -20,7 +21,7 @@ class CampaignsController extends AbstractController
      */
     public function index(CampaignsRepository $campaignsRepository): Response
     {
-        return $this->render('campaigns/index.html.twig', [
+        return $this->render('bo/campaigns/index.html.twig', [
             'campaigns' => $campaignsRepository->findAll(),
         ]);
     }
@@ -28,13 +29,52 @@ class CampaignsController extends AbstractController
     /**
      * @Route("/new", name="campaigns_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, SluggerInterface $slugger): Response
     {
+        $userId = $this->getUser()->getId();
         $campaign = new Campaigns();
         $form = $this->createForm(CampaignsType::class, $campaign);
         $form->handleRequest($request);
+        $now = new \DateTime('@'.strtotime('now'));
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $thumbnailImageFilename = $form->get('thumbnailImageFilename')->getData();
+            $lanscapeImageFilename = $form->get('lanscapeImageFilename')->getData();
+            if ($thumbnailImageFilename && $lanscapeImageFilename) {
+                $originalFilenameLanscapeImageFilename = pathinfo($thumbnailImageFilename->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFilename = $slugger->slug($originalFilenameLanscapeImageFilename);
+                $newFilenameLanscapeImageFilename = $safeFilename.'-'.uniqid().'.'.$thumbnailImageFilename->guessExtension();
+
+                $originalFilenameThumbnailImageFilename = pathinfo($thumbnailImageFilename->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFilename = $slugger->slug($originalFilenameThumbnailImageFilename);
+                $newFilenameThumbnailImageFilename = $safeFilename.'-'.uniqid().'.'.$thumbnailImageFilename->guessExtension();
+
+                try {
+                    $lanscapeImageFilename->move(
+                        $this->getParameter('campaigns_images_directory'),
+                        $newFilenameLanscapeImageFilename
+                    );
+
+                    $thumbnailImageFilename->move(
+                        $this->getParameter('campaigns_images_directory'),
+                        $newFilenameThumbnailImageFilename
+                    );
+                } catch (FileException $e) {
+                    echo 'trace';exit;
+                    // ... handle exception if something happens during file upload
+                }
+
+                $campaign->setLanscapeImageFilename($newFilenameLanscapeImageFilename);
+                $campaign->setThumbnailImageFilename($newFilenameThumbnailImageFilename);
+            }
+            else {
+                echo 'trace';exit;
+                // ... handle exception if something happens during file upload
+            }
+
+            $campaign->setCreationUserId($userId);
+            $campaign->setCreationDate($now);
+
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($campaign);
             $entityManager->flush();
@@ -42,7 +82,7 @@ class CampaignsController extends AbstractController
             return $this->redirectToRoute('campaigns_index');
         }
 
-        return $this->render('campaigns/new.html.twig', [
+        return $this->render('bo/campaigns/new.html.twig', [
             'campaign' => $campaign,
             'form' => $form->createView(),
         ]);
@@ -53,7 +93,7 @@ class CampaignsController extends AbstractController
      */
     public function show(Campaigns $campaign): Response
     {
-        return $this->render('campaigns/show.html.twig', [
+        return $this->render('bo/campaigns/show.html.twig', [
             'campaign' => $campaign,
         ]);
     }
@@ -72,7 +112,7 @@ class CampaignsController extends AbstractController
             return $this->redirectToRoute('campaigns_index');
         }
 
-        return $this->render('campaigns/edit.html.twig', [
+        return $this->render('bo/campaigns/edit.html.twig', [
             'campaign' => $campaign,
             'form' => $form->createView(),
         ]);

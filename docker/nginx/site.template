@@ -1,5 +1,5 @@
 upstream php-upstream {
-    server app:9000;
+    server avantics_app:9000;
 }
 
 #server {
@@ -17,7 +17,7 @@ upstream php-upstream {
 server {
 #    listen 443 ssl;
     listen 80;
-    server_name ${APP_DOMAIN};
+    server_name avantics.lan;
     root /srv/public;
 
     location / {

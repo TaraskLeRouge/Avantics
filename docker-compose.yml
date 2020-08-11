@@ -2,7 +2,7 @@ version: "2.4"
 
 services:
   web:
-    container_name: web
+    container_name: avantics_web
     build: ./docker/nginx
     links:
       - php-fpm
@@ -16,7 +16,7 @@ services:
       - 80:80
 
   php-cli:
-    container_name: cli
+    container_name: avantics_cli
     build:
         context: ./docker/php-cli
     stdin_open: true
@@ -25,13 +25,13 @@ services:
       - ./:/srv
 
   php-fpm:
-    container_name: app
+    container_name: avantics_app
     build: ./docker/php-fpm
     volumes:
       - ./:/srv
 
   mysql:
-    container_name: db
+    container_name: avantics_db
     build: ./docker/mysql
     ports:
       - 3306:3306
@@ -42,7 +42,7 @@ services:
       - ../db/:/var/lib/mysql
 
   node:
-    container_name: node
+    container_name: avantics_node
     build: docker/node
     volumes:
       - ./:/srv

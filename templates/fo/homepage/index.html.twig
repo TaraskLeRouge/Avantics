@@ -23,14 +23,50 @@
 
 
     <section class="subscription">
-        <h1></h1>
-	{{ form_start(form) }}
-	    {{ form_errors(form) }}
+        <header>
+            <h1>Inscrivez-vous !</h1>
+        </header>
 
-	    {{ form_row(form.lastname) }}
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <h2>Vos informations</h2>
+                <div>
+                    {{ form_row(form.email) }}
+                </div>
+                <div>
+                    {{ form_row(form.gender) }}
+                </div>
 
-	    {{ form_row(form.submit, { 'label': 'Submit me' }) }}
-	{{ form_end(form) }}
+                <div class="row">
+                    <div class="col-md-6">
+                        {{ form_row(form.firstname) }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ form_row(form.lastname) }}
+                    </div>
+                </div>
+
+                <div
+                    {{ form_row(form.birthdate) }}
+                </div>
+                <div>
+                    {{ form_row(form.post_code) }}
+                </div>
+
+                <h2>Vos préférences bons plans</h2>
+
+                <div class="text-center">
+                    {{ form_row(form.submit, { 'label': 'Submit me' }) }}
+                </div>
+
+
+                {{ form_start(form) }}
+
+                    {{ form_errors(form) }}
+
+                {{ form_end(form) }}
+            </div>
+        </div>
     </section>
 
     <section class="campaigns">

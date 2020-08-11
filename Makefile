@@ -25,7 +25,6 @@ help: ## Outputs this help screen
 
 
 ## Project command ———————————————————————————————————
-
 composer-install:
 	$(COMPOSER) install --ignore-platform-reqs --prefer-source
 
@@ -38,9 +37,11 @@ composer-require: ## [package]
 rm:
 	sudo rm -Rf ./public/build/ ./node_modules ./var ./vendor
 
+generate-assets:
+	$(DOCKER_COMPOSE) exec -w "/srv" node /bin/sh "yarn encore"
+
 
 ## Symfony command ———————————————————————————————————
-
 console:
 	$(CONSOLE) make:controller
 
@@ -49,8 +50,6 @@ cc: ## Clear the cache.
 
 fix-perms: ## Fix permissions of all var files
 	chmod -R 777 var/*
-
-
 
 ## Docker commands ———————————————————————————————————
 node: ## Connect to container

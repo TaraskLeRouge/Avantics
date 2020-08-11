@@ -33,12 +33,17 @@ class SubscribeType extends AbstractType
 
 
         $builder
+            ->add('gender', ChoiceType::class, [
+                'choices' => Users::gender,
+                'multiple'=>false,
+                'expanded'=>true,
+                'label_attr' => [
+                    'class' => 'radio-inline',
+                ]
+            ])
             ->add('email', EmailType::class)
             ->add('lastname', TextType::class)
             ->add('firstname', TextType::class)
-            ->add('gender', ChoiceType::class, [
-                'choices' => Users::gender
-            ])
             ->add('birthdate',DateType::Class, [
                 'widget' => 'choice',
                 'format' => 'dd/MM/yyyy',

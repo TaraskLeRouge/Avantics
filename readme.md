@@ -17,3 +17,11 @@ Execute this command: app:create-administrator EMAIL FIRSTNAME LASTNAME
 - Finir le readme
 - nettoyage makefile 
 - docker SMTP + test
+
+
+
+
+EIeT5z1v9r
+
+			<h1>{% trans %}app.footer.who_are_we.titre{% endtrans %}</h1>
+			<div>{% trans %}app.footer.who_are_we.description{% endtrans %}</div>
